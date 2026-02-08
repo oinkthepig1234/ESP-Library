@@ -165,11 +165,16 @@ function EspLib.Dependencies.UpdateFunction()
             continue
         end
         local rigcheck = hmd.RigType == Enum.HumanoidRigType.R15
-        local h = rigcheck and hmd:FindFirstChild("BodyHeightScale") or 1
-        local w = rigcheck and hmd:FindFirstChild("BodyWidthScale") or 1
-        local head = rigcheck and hmd:FindFirstChild("HeadScale") or 1
-        local prop = rigcheck and hmd:FindFirstChild("BodyProportionScale") or 1
-        local bodyType = rigcheck and hmd:FindFirstChild("BodyTypeScale") or 1
+        local h = rigcheck and hmd:FindFirstChild("BodyHeightScale")
+        local w = rigcheck and hmd:FindFirstChild("BodyWidthScale")
+        local head = rigcheck and hmd:FindFirstChild("HeadScale")
+        local prop = rigcheck and hmd:FindFirstChild("BodyProportionScale")
+        local bodyType = rigcheck and hmd:FindFirstChild("BodyTypeScale")
+        h = h and h.Value or 1
+        w = w and w.Value or 1
+        head = head and head.Value or 1
+        prop = prop and prop.Value or 1
+        bodyType = bodyType and bodyType.Value or 1
         local WidthScale = w * 0.65 + head * 0.25 + bodyType * 0.10
         local HeightScale = h * 0.70 + prop * 0.20 + head * 0.10
         local pos, size, onScreen = EspLib.Dependencies.convertTo2D(hrp.Position - Vector3.new(0, 0.4, 0), 4 * WidthScale, 6 * HeightScale)

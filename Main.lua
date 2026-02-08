@@ -290,6 +290,12 @@ Services.Players.PlayerRemoving:Connect(function(plr)
             end
             continue
         end
+        if i == "HealthBar" then
+            for _, drawing in v do
+                drawing:Remove()
+            end
+            continue
+        end
         v:Remove()
     end
     EspLib.EspTable[plr] = nil
@@ -321,14 +327,16 @@ function EspLib:NametagsToggle(value:boolean)
 end
 
 function EspLib:HealthBarToggle(value:boolean)
-    self.Config.MainToggles.Nametags = value
+    self.Config.MainToggles.HealthBar = value
     if value then
         self.Dependencies.StartUpdateThread()
         return
     end
     self.Dependencies.EndUpdateThread()
     for plr, espitems in self.EspTable do
-        espitems.Nametags.Visible = false
+        for i, v in espitems.HealthBar do
+            v.Visible = false
+        end
     end
 end
 

@@ -69,7 +69,7 @@ function EspLib.Dependencies.UpdateFunctions.Nametags(plr, char, hrp, humanoid, 
         if not Info.Value then
             continue
         end
-        local value = Info.Function(Services.Players.LocalPlayer, plr, char)
+        local value = Info.Function(plr, char)
         if not value or value == "" then
             continue
         end

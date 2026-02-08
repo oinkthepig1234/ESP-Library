@@ -272,6 +272,9 @@ function EspLib.Dependencies.AddEspToPlayer(plr)
     plr.CharacterAdded:Connect(function(char)
         EspLib.Dependencies.AddEspToCharacter(plr, char)
     end)
+    if plr.Character then
+        EspLib.Dependencies.AddEspToCharacter(plr, plr.Character)
+    end
 end
 
 for _, plr in ipairs(Services.Players:GetPlayers()) do

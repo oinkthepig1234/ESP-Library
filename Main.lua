@@ -283,6 +283,15 @@ end
 
 Services.Players.PlayerAdded:Connect(EspLib.Dependencies.AddEspToPlayer)
 Services.Players.PlayerRemoving:Connect(function(plr)
+    for i, v in EspLib.EspTable[plr] do
+        if i == "Skeletons" then
+            for _, drawing in v do
+                drawing:Remove()
+            end
+            continue
+        end
+        v:Remove()
+    end
     EspLib.EspTable[plr] = nil
 end)
 
@@ -331,7 +340,9 @@ function EspLib:SkeletonsToggle(value:boolean)
     end
     self.Dependencies.EndUpdateThread()
     for plr, espitems in self.EspTable do
-        espitems.Skeletons.Visible = false
+        for i,v in espitems.Skeletons do
+            v.Visible = false
+        end
     end
 end
 
@@ -346,7 +357,7 @@ function EspLib:EspColorSet(value:Color3)
                 end
                 continue
             end
-            if type(v) == "table" then
+            if i == "HealthBar" then
                 continue
             end
             v.Color = color

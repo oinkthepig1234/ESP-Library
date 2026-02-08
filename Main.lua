@@ -179,7 +179,7 @@ function EspLib.Dependencies.UpdateFunction()
         local HeightScale = h * 0.70 + prop * 0.20 + head * 0.10
         local pos, size, onScreen = EspLib.Dependencies.convertTo2D(hrp.Position - Vector3.new(0, 0.4, 0), 4 * WidthScale, 6 * HeightScale)
         for _, feature in ipairs(EnabledFeatures) do
-            pcall(EspLib.Dependencies.UpdateFunction[feature], player, char, hrp, hmd, espitems[feature], pos, size, onScreen)
+            pcall(EspLib.Dependencies.UpdateFunctions[feature], player, char, hrp, hmd, espitems[feature], pos, size, onScreen)
         end
     end
 end

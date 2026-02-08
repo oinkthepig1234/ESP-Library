@@ -192,7 +192,7 @@ function EspLib.Dependencies.StartUpdateThread()
 end
 
 function EspLib.Dependencies.EndUpdateThread()
-    for _, enabled in ipairs(EspLib.Config.MainToggles) do
+    for _, enabled in EspLib.Config.MainToggles do
         if enabled then
             return
         end

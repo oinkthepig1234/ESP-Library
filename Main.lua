@@ -164,7 +164,7 @@ function EspLib.Dependencies.UpdateFunction()
         if not hrp then
             continue
         end
-        local rigcheck = hmd.RigType == Enum.RigType.R15
+        local rigcheck = hmd.RigType == Enum.HumanoidRigType.R15
         local h = rigcheck and hmd:FindFirstChild("BodyHeightScale") or 1
         local w = rigcheck and hmd:FindFirstChild("BodyWidthScale") or 1
         local head = rigcheck and hmd:FindFirstChild("HeadScale") or 1

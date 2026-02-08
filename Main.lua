@@ -275,6 +275,23 @@ function EspLib.Dependencies.AddEspToPlayer(plr)
     if plr.Character then
         EspLib.Dependencies.AddEspToCharacter(plr, plr.Character)
     end
+    plr:GetPropertyChangedSignal("Team"):Connect(function()
+        local color = EspLib.TeamColors[plr.Team]
+        if EspLib.TeamColors[plr.Team] then
+            for i, v in EspLib.EspTable[plr] do
+                if i == "Skeletons" then
+                    for _, drawing in v do
+                        drawing.Color = color
+                    end
+                    continue
+                end
+                if i == "HealthBar" then
+                    continue
+                end
+                v.Color = color
+            end
+        end
+    end)
 end
 
 for _, plr in ipairs(Services.Players:GetPlayers()) do

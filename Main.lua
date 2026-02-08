@@ -47,8 +47,8 @@ function EspLib.Dependencies.convertTo2D(pos, width, height)
     local screenPos, onScreen = camera:WorldToViewportPoint(pos)
     if width and height then
         local depth = screenPos.Z
-        local screenWidth = EspLib.Dependencies.studsToPixels(width, depth)
-        local screenHeight = EspLib.Dependencies.studsToPixels(height, depth)
+        local screenWidth = EspLib.Dependencies.StudsToPixels(width, depth)
+        local screenHeight = EspLib.Dependencies.StudsToPixels(height, depth)
         return Vector2.new(screenPos.X, screenPos.Y), Vector2.new(screenWidth, screenHeight), onScreen
     end
     return Vector2.new(screenPos.X, screenPos.Y)

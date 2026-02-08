@@ -73,16 +73,16 @@ function EspLib.Dependencies.UpdateFunctions.Nametags(plr, char, hrp, humanoid, 
         if not value or value == "" then
             continue
         end
-        str = str .. EspLib.Config.Values.NametagSeperator .. tostring(value)
+        str = str .. EspLib.Config.Values.NametagSeperator .. tostring(value) .. Info.Suffix
     end
     items.Text = str
     items.Visible = onScreen
     items.Transparency = onScreen and 1 or 0
     if EspLib.Config.Values.ScaleNametags then
-        items.Position = Vector2.new(pos.X, pos.Y - size.Y * (0.5 + (EspLib.Config.Values.Nametagsize/100)))
-        items.Size = size.Y * (EspLib.Config.Values.Nametagsize/100)
+        items.Position = Vector2.new(pos.X, pos.Y - size.Y * (0.5 + (EspLib.Config.Values.NametagSize/100)))
+        items.Size = size.Y * (EspLib.Config.Values.NametagSize/100)
     else
-        items.Position = Vector2.new(pos.X, pos.Y - size.Y * 0.5 - (EspLib.Config.Values.Nametagsize))
+        items.Position = Vector2.new(pos.X, pos.Y - size.Y * 0.5 - (EspLib.Config.Values.NametagSize))
     end
 end
 
@@ -217,7 +217,7 @@ function EspLib.Dependencies.CreateFunctions.Nametags(plr, char, enabled, color)
     text.Visible = false
     text.Transparency = 0
     if not EspLib.Config.Values.ScaleNametags then
-        text.Size = EspLib.Config.Values.Nametagsize
+        text.Size = EspLib.Config.Values.NametagSize
     end
     return text
 end
@@ -350,7 +350,7 @@ function EspLib:ScaleNametagsToggle(value:boolean)
     self.Config.Values.ScaleNametags = value
     if not value then
         for plr, espitems in self.EspTable do
-            espitems.Nametags.Size = EspLib.Config.Values.Nametagsize
+            espitems.Nametags.Size = EspLib.Config.Values.NametagSize
         end
     end
 end
